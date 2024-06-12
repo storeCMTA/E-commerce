@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const mongoURI = "mongodb://localhost:27017/GreenField";
 
@@ -11,4 +11,4 @@ mongoose.connect(mongoURI)
 
 const db = mongoose.connection;
 
-module.exports = db;
+module.exports = db; 
