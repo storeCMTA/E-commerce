@@ -9,5 +9,5 @@ const itemSchema = new mongoose.Schema({
   quantity: Number
 });
 
-const Product = mongoose.model("Products",itemSchema)
+const Product = mongoose.model("Products",itemSchema);
 module.exports = {Product}; 
