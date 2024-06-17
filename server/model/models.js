@@ -7,6 +7,10 @@ const itemSchema = new mongoose.Schema({
   price:Number,
   image:String, //taha (should change it accordingly)
   quantity: Number
+},
+{
+  timestamps: true,
+  collection: 'Products'
 });
 
 const Product = mongoose.model("Products",itemSchema);
