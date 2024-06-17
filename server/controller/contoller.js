@@ -10,7 +10,15 @@ const getProducts = function (req, res) {
     });  
 };
 //returns an array
-
+const getProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await dataTables.Product.findById(id).lean(); 
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 const addProduct = function (req, res) {
   dataTables.Product.insertMany(
@@ -66,4 +74,4 @@ const updateProduct = (req, res) => {
     });
 };
 
-module.exports = { getProducts, addProduct , updateProduct , deleteProduct};
+module.exports = { getProducts, addProduct , updateProduct , deleteProduct , getProduct};
