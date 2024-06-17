@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const mongoURI = "mongodb://localhost:27017/GreenField";
+const mongoURI = "mongodb+srv://shaymabahi330:pclFp33QGh5vr1rR@greenfield.1qcs6ze.mongodb.net/Greenfield?retryWrites=true&w=majority&appName=Greenfield";
 
 mongoose.connect(mongoURI)
 .then(() => {
