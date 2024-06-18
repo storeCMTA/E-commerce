@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const Shop = ({products}) => {
   
   return (
@@ -9,7 +9,9 @@ const Shop = ({products}) => {
         {/* Product Card Example */}
         {products.map((product) => (
           <div key={product} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <Link to={`/product/${product._id}`}>
             <img src={`https://source.unsplash.com/random/400x400?clothes,${product.name}`} alt="Product" className="w-full h-64 object-cover" />
+            </Link>
             <div className="p-4">
               <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
               <p className="text-gray-600 mb-4">{product.price}$</p>
