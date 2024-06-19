@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-
+import Navbar from './navbar';
 const Shop = ({ products, showFilters = true }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,6 +29,8 @@ const Shop = ({ products, showFilters = true }) => {
   });
 
   return (
+    <>
+    <Navbar />
     <div className="container mx-auto px-4 py-16">
       <div className="flex">
         {showFilters && (
@@ -99,6 +101,8 @@ const Shop = ({ products, showFilters = true }) => {
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 

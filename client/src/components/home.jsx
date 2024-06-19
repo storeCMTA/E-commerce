@@ -4,9 +4,11 @@ import Shop from './Shop';
 import menImg from '../assets/men.png';
 import womenImg from '../assets/women.png';
 import kidImg from '../assets/youth.png';
-
+import Navbar from './navbar';
 const Home = ({ products }) => {
   return (
+    <>
+    <Navbar/>
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
       <section className="bg-cover bg-center h-screen" style={{ backgroundImage: "url('https://source.unsplash.com/random/1600x900?fashion')" }}>
@@ -73,6 +75,8 @@ const Home = ({ products }) => {
         </div>
       </footer>
     </div>
+    </>
+   
   );
 };
 
