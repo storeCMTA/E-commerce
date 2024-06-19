@@ -1,7 +1,9 @@
 import React from 'react';
-
+import Navbar from './navbar';
 const Contact = () => {
   return (
+    <>
+    <Navbar />
     <div className="container mx-auto px-4 py-16">
       <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">Contact Us</h1>
       <form className="max-w-xl mx-auto">
@@ -30,6 +32,8 @@ const Contact = () => {
         </div>
       </form>
     </div>
+    </>
+   
   );
 };
 
