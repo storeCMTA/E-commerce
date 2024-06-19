@@ -1,63 +1,65 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    // Implement login logic here
-    // On successful login, redirect to the desired page
-    navigate('/');
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-        <h1 className="text-3xl font-bold mb-8 text-center">Login</h1>
-        <form onSubmit={handleLogin}>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-              Password
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="******************"
-              required
-            />
-          </div>
-          <div className="text-center">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
+    <div >
+     <div class="signinform">
+        
+     <h1 class="fw-bold">Service Login</h1>
+       
+        <div class="container">
+       
+            <div class="w3l-form-info">
+                <div class="w3_info">
+                    <h2>Login</h2>
+                    <form action="#" method="post">
+                        <div class="input-group">
+                            <span><i class="fas fa-user" aria-hidden="true"></i></span>
+                            <input type="email" placeholder=" Email" required=""/>
+                        </div>
+                        <div class="input-group">
+                            <span><i class="fas fa-key" aria-hidden="true"></i></span>
+                            <input type="Password" placeholder="Password" required=""/>
+                        </div>
+                       
+                        <button class="btn btn-primary btn-block" type="submit">Login</button>
+                    </form>
+                    <p class="continue"><span>or Login with</span></p>
+                    <div class="social-login">
+                        <a href="#facebook">
+                            <div class="facebook">
+                                <span class="fab fa-facebook-f" aria-hidden="true"></span>
+
+                            </div>
+                        </a>
+                        <a href="#twitter">
+                            <div class="twitter">
+                                <span class="fab fa-twitter" aria-hidden="true"></span>
+                            </div>
+                        </a>
+                        <a href="#google">
+                            <div class="google">
+                                <span class="fab fa-google" aria-hidden="true"></span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="account">Don't have an account? <a href="#signup">Sign up</a></p>
+                </div>
+            </div>
+           
+        </div>
+       
+        <div style={{}} class="footer">
+            <p > All Rights Reserved | Design by Achref
+                    </p>
+        </div>
+  
+    </div>
+
+
+   
     </div>
   );
-};
+}
 
 export default Login;

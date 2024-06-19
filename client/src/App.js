@@ -9,6 +9,8 @@ import About from './components/about.jsx';
 import Contact from './components/contact.jsx';
 import Login from './components/login.jsx';
 import Product from './components/product.jsx';
+import Register from './components/register.jsx';
+import Dashboard from './components/dashboard.jsx';
 
 
 const App = () => {
@@ -34,6 +36,8 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path='/dashboard' element={<Dashboard/>}  />
+        <Route path='/register' element = {<Register/>}  />
         <Route path="/product/:id" element={<Product />} />
       </Routes>
     </Router>
