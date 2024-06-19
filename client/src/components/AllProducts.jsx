@@ -15,15 +15,15 @@ const fetchProducts = async () => {
     }
 };
 const handleDelete = async (id) => {
-    const isConfirmed = window.confirm('Are you sure you want to delete this expense?');
-    if (isConfirmed) {
+   
+   
       try {
         await axios.delete(`http://localhost:5500/deleteProduct/${id}`);
         fetchProducts();
       } catch (error) {
         console.error('Error deleting expense:', error);
       }
-    }
+    
   };
 
 

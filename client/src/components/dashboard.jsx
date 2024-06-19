@@ -4,13 +4,27 @@ import './App.css'; // Assurez-vous d'importer le fichier CSS
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
+  const [deletedID,setdeletedID]=useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5500/getProducts").then((res) => {
-      setData(res.data);
-    });
+    fetchProducts();
   }, []);
-
+const fetchProducts = async () => {
+    try {
+      const response = await axios.get('http://localhost:5500/getProducts');
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching Products:', error);
+    }
+};
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5500/deleteProduct/${id}`);
+      fetchProducts()
+    } catch (error) {
+      console.error('Error deleting Product:', error);
+    }
+};
   return (
     <div>
       
@@ -51,6 +65,7 @@ const Dashboard = () => {
                     className="btn btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
+                    onClick={() => setdeletedID(element._id)}
                   >
                     Delete
                   </button>
@@ -91,7 +106,7 @@ const Dashboard = () => {
                   </button>
                   <button
 
-                  //// chaima put the function of delete here
+                  onClick={()=>handleDelete(deletedID)}
                     data-bs-dismiss="modal"
                     type="button"
                     className="btn btn-danger"
