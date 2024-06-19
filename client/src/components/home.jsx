@@ -15,6 +15,7 @@ const Home = ({products}) => {
             <Link to="/about" className="text-gray-600 hover:text-gray-900">About</Link>
             <Link to="/contact" className="text-gray-600 hover:text-gray-900">Contact</Link>
             <Link to="/login" className="text-gray-600 hover:text-gray-900">Login</Link>
+            <Link to="/register" className="text-gray-600 hover:text-gray-900">Register</Link>
           </div>
         </div>
       </nav>
