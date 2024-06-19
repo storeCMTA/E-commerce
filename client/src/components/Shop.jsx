@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import Navbar from './navbar';
+
 const Shop = ({ products, showFilters = true }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,11 +29,10 @@ const Shop = ({ products, showFilters = true }) => {
   });
 
   return (
-    <>
-    <Navbar />
     <div className="container mx-auto px-4 py-16">
       <div className="flex">
         {showFilters && (
+          
           <div className="w-1/4 p-4 -ml-20">
             <h2 className="text-2xl font-bold mb-4">Filter by Category</h2>
             <div>
@@ -100,9 +99,7 @@ const Shop = ({ products, showFilters = true }) => {
           </div>
         </div>
       </div>
-    </div>
-    </>
-    
+    </div>   
   );
 };
 
