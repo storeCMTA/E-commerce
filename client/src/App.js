@@ -11,7 +11,10 @@ import Login from './components/login.jsx';
 import Product from './components/product.jsx';
 import Register from './components/register.jsx';
 import Dashboard from './components/dashboard.jsx';
-
+import Navbar from './components/navbar.jsx';
+import Men from './components/pages/men.jsx'
+import Women from './components/pages/women.jsx'
+import Kids from './components/pages/kids.jsx'
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -30,6 +33,7 @@ const App = () => {
 
   return (
     <Router>
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home products={products}/>} />
         <Route path="/shop" element={<Shop products={products} />} />
@@ -39,6 +43,9 @@ const App = () => {
         <Route path='/dashboard' element={<Dashboard/>}  />
         <Route path='/register' element = {<Register/>}  />
         <Route path="/product/:id" element={<Product />} />
+        <Route path='/shop/men' element = {<Men products={products}/>}  />
+        <Route path='/shop/women' element = {<Women products={products}/>}  />
+        <Route path='/shop/kids' element = {<Kids products={products}/>}  />
       </Routes>
     </Router>
   );
