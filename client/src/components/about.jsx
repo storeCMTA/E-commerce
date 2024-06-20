@@ -8,6 +8,7 @@ const About = () => {
         We are a leading clothing store with the latest trends in fashion. Our mission is to provide high-quality clothing at affordable prices. Our team is dedicated to bringing you the best shopping experience.
       </p>
     </div>
+
   );
 };
 

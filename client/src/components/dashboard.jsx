@@ -1,22 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
 import './App.css'; // Assurez-vous d'importer le fichier CSS
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const [data, setData] = useState([]);
+  const [deletedID,setdeletedID]=useState(null);
+             
+
+
+const navigate = useNavigate()
+
+
+
+  const logout = () => {
+    axios.get("http://localhost:5500/logout").then((res) => {
+      props.hundeltoken("");
+      navigate('/login')
+    });
+  };
+
+
 
   useEffect(() => {
-    axios.get("http://localhost:5500/getProducts").then((res) => {
-      setData(res.data);
-    });
+    fetchProducts();
   }, []);
-
+const fetchProducts = async () => {
+    try {
+      const response = await axios.get('http://localhost:5500/getProducts');
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching Products:', error);
+    }
+};
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5500/deleteProduct/${id}`);
+      fetchProducts()
+    } catch (error) {
+      console.error('Error deleting Product:', error);
+    }
+};
   return (
     <div>
       
       <nav className="navbar navbar-expand-lg navbar-custom">
         <div className="container-fluid">
           <h3 className="navbar-brand" >Admin Dashboard</h3>
+          <button onClick={()=>{logout()}} className="btn btn-outline-danger ms-auto" type="button" >Logout</button>
         </div>
       </nav>
 
@@ -51,6 +82,7 @@ const Dashboard = () => {
                     className="btn btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
+                    onClick={() => setdeletedID(element._id)}
                   >
                     Delete
                   </button>
@@ -91,7 +123,7 @@ const Dashboard = () => {
                   </button>
                   <button
 
-                  //// chaima put the function of delete here
+                  onClick={()=>handleDelete(deletedID)}
                     data-bs-dismiss="modal"
                     type="button"
                     className="btn btn-danger"

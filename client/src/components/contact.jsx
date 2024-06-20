@@ -30,6 +30,7 @@ const Contact = () => {
         </div>
       </form>
     </div>
+   
   );
 };
 

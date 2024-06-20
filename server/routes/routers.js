@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const ProductsController = require('../controller/contoller.js')
+// const usercontroller = require('../controller/usercontroller.js')
  
 router.post('/addProduct', ProductsController.addProduct);
 router.get('/getProducts', ProductsController.getProducts);
