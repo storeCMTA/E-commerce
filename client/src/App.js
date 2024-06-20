@@ -11,6 +11,8 @@ import Login from './components/login.jsx';
 import Product from './components/product.jsx';
 import Register from './components/register.jsx';
 import Dashboard from './components/dashboard.jsx';
+import Navbar from './components/navbar.jsx';
+import Footer from './components/footer.jsx';
 
 
 const App = () => {
@@ -29,18 +31,22 @@ const App = () => {
 
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home products={products}/>} />
-        <Route path="/shop" element={<Shop products={products} />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path='/dashboard' element={<Dashboard/>}  />
-        <Route path='/register' element = {<Register/>}  />
-        <Route path="/product/:id" element={<Product />} />
-      </Routes>
-    </Router>
+ 
+  <div>
+    <Navbar/>
+        <Routes>
+          <Route path="/" element={<Home products={products}/>} />
+          <Route path="/shop" element={<Shop products={products} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path='/dashboard' element={<Dashboard/>}  />
+          <Route path='/register' element = {<Register/>}  />
+          <Route path="/product/:id" element={<Product />} />
+        </Routes>
+        <Footer/>
+      
+  </div>
   );
 };
 
