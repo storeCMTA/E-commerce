@@ -55,7 +55,7 @@ const fetchProducts = async () => {
         <div className="row mt-5">
           {data.map((element, index) => (
             <div className="col-md-3 mt-5" key={index}>
-              <div style={{ height: "600px" }} className="card mb-4">
+              <div style={{ height: "500px" }} className="card mb-4">
                 <img
                   style={{ height: "300px" }}
                   src={element.image}
@@ -102,7 +102,7 @@ const fetchProducts = async () => {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h1 className="modal-title fs-5 fw-bold" id="staticBackdropLabel"></h1>
+                  {/*<h1 className="modal-title fs-5 fw-bold" id="staticBackdropLabel"></h1>*/}
                   <button
                     type="button"
                     className="btn-close"
