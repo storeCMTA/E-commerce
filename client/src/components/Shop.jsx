@@ -10,7 +10,7 @@ const Shop = ({products}) => {
         {products.map((product) => (
           <div key={product} className="bg-white rounded-lg shadow-md overflow-hidden">
             <Link to={`/product/${product._id}`}>
-            <img src={`https://source.unsplash.com/random/400x400?clothes,${product.name}`} alt="Product" className="w-full h-64 object-cover" />
+            <img src={product.image} alt="Product" className="w-100 h-120 object-cover" />
             </Link>
             <div className="p-4">
               <h3 className="text-xl font-semibold mb-2">{product.name}</h3>

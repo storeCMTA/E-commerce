@@ -22,7 +22,7 @@ const App = () => {
         console.log(products);
       })
       .catch(error => console.error('Error fetching products:', error));
-  }, []);
+  }, [products]);
 
 
 
