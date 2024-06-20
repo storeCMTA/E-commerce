@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Product = () => {
-  const [product, setProduct] = useState({})
+  const [product,setProduct]=useState({})
   const { id } = useParams();
   // Fetch product details using the id
   // For simplicity, we use dummy data here

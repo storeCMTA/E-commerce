@@ -12,10 +12,10 @@ const Register = () => {
     axios
       .post("http://localhost:5500/register", { name, email, password })
       .then((res) => {
-
+       
         if (res.data.newuser[0]) {
           navigate("/login");
-        }
+        } 
       })
       .catch((err) => {
         setError("Email already used !!!");
@@ -31,7 +31,7 @@ const Register = () => {
           <div className="w3l-form-info">
             <div className="w3_info">
               <h2>Register</h2>
-              {error ? <div className="alert alert-danger">{error}</div> : <p></p>}
+              {error ?  <div className="alert alert-danger">{error}</div> : <p></p>}
               <div>
                 <div className="input-group">
                   <span>
@@ -73,7 +73,7 @@ const Register = () => {
                   />
                 </div>
 
-                <button onClick={() => { register() }} className="btn btn-primary btn-block">Register</button>
+                <button onClick={()=>{register()}} className="btn btn-primary btn-block">Register</button>
               </div>
               <p className="continue">
                 <span>or Register with</span>

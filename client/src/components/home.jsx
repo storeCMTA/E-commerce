@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Shop from './shop';
+import Shop from './Shop';
 import menImg from '../assets/men.png';
 import womenImg from '../assets/women.png';
 import kidImg from '../assets/youth.png';
 
-const Home = ({ products,addToCart }) => {
+const Home = ({ products }) => {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
@@ -24,7 +24,7 @@ const Home = ({ products,addToCart }) => {
           {/* Men's Category */}
           <Link to="/shop/men" className="no-underline">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src={menImg} alt="Men's Fashion" className="w-full h-full object-cover"  />
+              <img src={menImg} alt="Men's Fashion" className="w-full h-64 object-cover" style={{ height: '400px' }}/>
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">Men's Collection</h3>
                 <p className="text-gray-600 mb-4">Explore our latest men's fashion</p>
@@ -35,7 +35,7 @@ const Home = ({ products,addToCart }) => {
           {/* Women's Category */}
           <Link to="/shop/women" className="no-underline">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src={womenImg} alt="Women's Fashion" className="w-full h-full object-cover" />
+              <img src={womenImg} alt="Women's Fashion" className="w-full h-64 object-cover" style={{ height: '400px' }}/>
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">Women's Collection</h3>
                 <p className="text-gray-600 mb-4">Discover our stylish women's clothing</p>
@@ -46,7 +46,7 @@ const Home = ({ products,addToCart }) => {
           {/* Kids' Category */}
           <Link to="/shop/kids" className="no-underline">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src={kidImg} alt="Kids' Fashion" className="w-full h-full object-cover" />
+              <img src={kidImg} alt="Kids' Fashion" className="w-full h-64 object-cover" style={{ height: '400px' }}/>
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">Kids' Collection</h3>
                 <p className="text-gray-600 mb-4">Browse our adorable kids' outfits</p>
@@ -59,13 +59,13 @@ const Home = ({ products,addToCart }) => {
       {/* Featured Products Section */}
       <section id="featured" className="container mx-auto px-4 py-16">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Our Best Sellers</h2>
-        <Shop products={products.slice(0, 3)} showFilters={false}  addToCart={addToCart}  />
+        <Shop products={products.slice(0, 3)} showFilters={false} />
       </section>
 
-
+  
     </div>
-
-
+   
+   
   );
 };
 

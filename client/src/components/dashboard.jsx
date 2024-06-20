@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import './App.css'; // Assurez-vous d'importer le fichier CSS
 
 const Dashboard = (props) => {
   const [data, setData] = useState([]);
-  const [deletedID, setdeletedID] = useState(null);
+  const [deletedID,setdeletedID]=useState(null);
+             
 
 
-
-  const navigate = useNavigate()
+const navigate = useNavigate()
 
 
 
@@ -25,14 +25,14 @@ const Dashboard = (props) => {
   useEffect(() => {
     fetchProducts();
   }, []);
-  const fetchProducts = async () => {
+const fetchProducts = async () => {
     try {
       const response = await axios.get('http://localhost:5500/getProducts');
       setData(response.data);
     } catch (error) {
       console.error('Error fetching Products:', error);
     }
-  };
+};
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5500/deleteProduct/${id}`);
@@ -40,14 +40,21 @@ const Dashboard = (props) => {
     } catch (error) {
       console.error('Error deleting Product:', error);
     }
-  };
+};
   return (
     <div>
-
+      
       <nav className="navbar navbar-expand-lg navbar-custom">
         <div className="container-fluid">
-          <h3 className="navbar-brand" >Admin Dashboard</h3>
-          <button onClick={() => { logout() }} className="btn btn-outline-danger ms-auto" type="button" >Logout</button>
+          <div className='flex justify-between'>
+            <div className='flex space-x-5'>
+              <h3 className="navbar-brand" >Admin Dashboard</h3>
+              <button onClick={()=>{navigate('/dashboard/addProduct')}} className="btn btn-outline-danger ms-auto" type="button" >Add product</button>
+            </div>
+            <div>
+                <button onClick={()=>{logout()}} className="btn btn-outline-danger mr-2 " type="button" >Logout</button>
+            </div>
+          </div>
         </div>
       </nav>
 
@@ -67,12 +74,14 @@ const Dashboard = (props) => {
                   <p style={{ textAlign: 'center', marginTop: '30px' }} className="card-text fw-semibold">${element.price}</p>
                 </div>
                 <div className="d-flex justify-content-center mb-3">
+                   
                   <button
                     type="button"
                     className="btn btn-success me-3"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                     data-bs-whatever="@mdo"
+                    onClick={()=>{navigate('/dashboard/updateProduct/'+element._id)}} 
                   >
                     Update
                   </button>
@@ -123,7 +132,7 @@ const Dashboard = (props) => {
                   </button>
                   <button
 
-                    onClick={() => handleDelete(deletedID)}
+                  onClick={()=>handleDelete(deletedID)}
                     data-bs-dismiss="modal"
                     type="button"
                     className="btn btn-danger"
@@ -193,7 +202,7 @@ const Dashboard = (props) => {
                         placeholder="Price of product..."
                         className="form-control"
                         id="message-text"
-                        type='Number'
+                        type = 'Number'
                       ></input>
                     </div>
                   </form>
@@ -207,7 +216,7 @@ const Dashboard = (props) => {
                     Close
                   </button>
                   <button
-                    //// taha put the function of update
+                  //// taha put the function of update
                     type="button"
                     data-bs-dismiss="modal"
                     className="btn btn-success"
