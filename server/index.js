@@ -1,17 +1,23 @@
 const express = require("express");
 const cors = require('cors');
+const cookieparser = require('cookie-parser')
 
 const app = express();
  
 const db = require("./database/index.js");  // Import database connection
 const Router = require('./routes/routers.js')
+const userrouter = require('./routes/userroutes.js')
 
 const PORT = process.env.PORT || 5500;
 
 
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000"],  
+  credentials: true //// d'ont touch that...
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieparser())
 
 
 db.on('error', (error) => {
@@ -19,6 +25,7 @@ db.on('error', (error) => {
 });
 
 app.use('/',Router)
+app.use('/',userrouter)
 
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}!`);

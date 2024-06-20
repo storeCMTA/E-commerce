@@ -62,16 +62,7 @@ const Home = ({ products }) => {
         <Shop products={products.slice(0, 3)} showFilters={false} />
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 ClothingShop. All rights reserved.</p>
-          <div className="flex justify-center space-x-4 mt-4">
-            <Link to="/privacy" className="hover:text-gray-400 no-underline">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-gray-400 no-underline">Terms of Service</Link>
-          </div>
-        </div>
-      </footer>
+  
     </div>
    
    

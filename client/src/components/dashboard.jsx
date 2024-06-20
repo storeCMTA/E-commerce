@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
 import './App.css'; // Assurez-vous d'importer le fichier CSS
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const [data, setData] = useState([]);
   const [deletedID,setdeletedID]=useState(null);
+             
+
+
+const navigate = useNavigate()
+
+
+
+  const logout = () => {
+    axios.get("http://localhost:5500/logout").then((res) => {
+      props.hundeltoken("");
+      navigate('/login')
+    });
+  };
+
+
 
   useEffect(() => {
     fetchProducts();
@@ -31,6 +47,7 @@ const fetchProducts = async () => {
       <nav className="navbar navbar-expand-lg navbar-custom">
         <div className="container-fluid">
           <h3 className="navbar-brand" >Admin Dashboard</h3>
+          <button onClick={()=>{logout()}} className="btn btn-outline-danger ms-auto" type="button" >Logout</button>
         </div>
       </nav>
 
