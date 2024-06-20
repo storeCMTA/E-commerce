@@ -14,7 +14,7 @@ const Login = (props) => {
       
      if (res.data.token){
       localStorage.setItem("token",res.data.token)
-      props.hundeltoken(res.data.token)
+      props.handleToken(res.data.token)
       
       if (res.data.role==="admin"){
         navigate('/dashboard')

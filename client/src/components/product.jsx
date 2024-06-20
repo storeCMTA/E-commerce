@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Product = () => {
-  const [product,setProduct]=useState({})
+  const [product, setProduct] = useState({})
   const { id } = useParams();
   // Fetch product details using the id
   // For simplicity, we use dummy data here
@@ -21,7 +21,7 @@ const Product = () => {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        <img src={product.image} alt={product.name} className="w-full h-64 object-cover" />
+        <img src={product.image} alt={product.name} className="w-full h-100 object-cover" />
         <div className="p-4">
           <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
           <p className="text-gray-600 mb-4">${product.price}</p>

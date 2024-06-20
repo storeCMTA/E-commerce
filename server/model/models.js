@@ -5,7 +5,7 @@ const itemSchema = new mongoose.Schema({
   category:String,
   description: String,
   price:Number,
-  image:String, //taha (should change it accordingly)
+  image:String, 
   quantity: Number
 },
 {
