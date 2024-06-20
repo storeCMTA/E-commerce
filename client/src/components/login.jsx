@@ -13,6 +13,7 @@ const Login = (props) => {
     axios.post('http://localhost:5500/login',{email,password}).then((res)=>{
       
      if (res.data.token){
+      localStorage.setItem("token",res.data.token)
       props.hundeltoken(res.data.token)
       
       if (res.data.role==="admin"){
@@ -32,60 +33,60 @@ const Login = (props) => {
 
   return (
     <div>
-      <div class="signinform">
-        <h1 class="fw-bold">Service Login</h1>
+      <div className="signinform">
+        <h1 className="fw-bold">Service Login</h1>
 
-        <div class="container">
-          <div class="w3l-form-info">
-            <div class="w3_info">
+        <div className="container">
+          <div className="w3l-form-info">
+            <div className="w3_info">
               <h2>Login</h2>
               {error ?  <div className="alert alert-danger">{error}</div> : null}
               <div >
-                <div class="input-group">
+                <div className="input-group">
                   <span>
-                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <i className="fas fa-user" aria-hidden="true"></i>
                   </span>
                   <input onChange={(e)=>{setEmail(e.target.value)}} type="email" placeholder=" Email" />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                   <span>
-                    <i class="fas fa-key" aria-hidden="true"></i>
+                    <i className="fas fa-key" aria-hidden="true"></i>
                   </span>
                   <input onChange={(e)=>{setPassword(e.target.value)}} type="text" placeholder="Password"  />
                 </div>
 
-                <button onClick={()=>{login()}} class="btn btn-primary btn-block" >
+                <button onClick={()=>{login()}} className="btn btn-primary btn-block" >
                   Login
                 </button>
               </div>
-              <p class="continue">
+              <p className="continue">
                 <span>or Login with</span>
               </p>
-              <div class="social-login">
+              <div className="social-login">
                 <a href="#facebook">
-                  <div class="facebook">
-                    <span class="fab fa-facebook-f" aria-hidden="true"></span>
+                  <div className="facebook">
+                    <span className="fab fa-facebook-f" aria-hidden="true"></span>
                   </div>
                 </a>
                 <a href="#twitter">
-                  <div class="twitter">
-                    <span class="fab fa-twitter" aria-hidden="true"></span>
+                  <div className="twitter">
+                    <span className="fab fa-twitter" aria-hidden="true"></span>
                   </div>
                 </a>
                 <a href="#google">
-                  <div class="google">
-                    <span class="fab fa-google" aria-hidden="true"></span>
+                  <div className="google">
+                    <span className="fab fa-google" aria-hidden="true"></span>
                   </div>
                 </a>
               </div>
-              <p class="account">
+              <p className="account">
                 Don't have an account? <a href="/register">Sign up</a>
               </p>
             </div>
           </div>
         </div>
 
-        <div style={{}} class="footer">
+        <div style={{}} className="footer">
           <p> All Rights Reserved | Design by Achref</p>
         </div>
       </div>

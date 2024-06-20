@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Shop from './Shop';
 import menImg from '../assets/men.png';
 import womenImg from '../assets/women.png';
 import kidImg from '../assets/youth.png';
 
-const Home = ({ products }) => {
+const Home = ({ products ,hundeltoken}) => {
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}

@@ -7,10 +7,10 @@ const Navbar = (props) => {
 const navigate = useNavigate()
 
   const logout = () => {
-    axios.get("http://localhost:5500/logout").then((res) => {
-      props.hundeltoken("");
+      localStorage.removeItem("token")
+      props.hundeltoken("")
       navigate('/login')
-    });
+
   };
 
   return (
@@ -46,9 +46,9 @@ const navigate = useNavigate()
           {props.token ? (
             <Link
               style={{ color: "white" }}
-              to="/logout"
               className="text-gray-600 hover:text-gray-900 no-underline btn btn-danger"
               onClick={()=>{logout()}}
+              to="/login"
             >
               Logout
             </Link>

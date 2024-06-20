@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link , useNavigate } from "react-router-dom";
+import axios from 'axios';
 
-const Shop = ({ products, showFilters = true }) => {
+const Shop = ({  showFilters = true }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [data,setData] = useState([])
+  const navigate = useNavigate()
 
   const handleCategoryChange = (category) => {
     setSelectedCategory((prevCategory) => (prevCategory === category ? '' : category));
@@ -17,8 +20,30 @@ const Shop = ({ products, showFilters = true }) => {
     setSelectedCategory('');
     setSearchTerm('');
   };
+  
+   const hundeldata = async ()=>{
+    try {
+     const token = await localStorage.getItem("token")
+     if(!token){
+        navigate('/login')
+     }
+     else {
+      const response = await axios.get('http://localhost:5500/shop',{headers:{authorization:token}})
+      console.log(response.data)
+       setData(response.data)
+     }
+    
+    }catch(err){
+      console.log(err)
+    }
 
-  const filteredProducts = products.filter((product) => {
+   }
+
+  useEffect(()=>{
+   hundeldata()
+  },[])
+
+  const filteredProducts = data.filter((product) => {
     if (selectedCategory && product.category !== selectedCategory) {
       return false;
     }

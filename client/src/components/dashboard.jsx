@@ -14,10 +14,9 @@ const navigate = useNavigate()
 
 
   const logout = () => {
-    axios.get("http://localhost:5500/logout").then((res) => {
-      props.hundeltoken("");
+       localStorage.removeItem("token")
+       props.hundeltoken("")
       navigate('/login')
-    });
   };
 
 
@@ -27,9 +26,11 @@ const navigate = useNavigate()
   }, []);
 const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:5500/getProducts');
+      const token=localStorage.getItem("token")
+      const response = await axios.get('http://localhost:5500/getALLProducts',{headers:{authorization:token}});
       setData(response.data);
     } catch (error) {
+      console.log(error)
       console.error('Error fetching Products:', error);
     }
 };
