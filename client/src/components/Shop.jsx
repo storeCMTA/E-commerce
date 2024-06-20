@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
-const Shop = ({ products, showFilters = true }) => {
+const Shop = ({ products, showFilters = true, addToCart, cart }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -31,9 +31,7 @@ const Shop = ({ products, showFilters = true }) => {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="flex">
-
         {showFilters && (
-
           <div className="w-1/4 p-4 -ml-20">
             <h2 className="text-2xl font-bold mb-4">Filter by Category</h2>
             <div>
@@ -55,7 +53,7 @@ const Shop = ({ products, showFilters = true }) => {
             <div>
               <button
                 className={`btn ${selectedCategory === 'kids' ? 'bg-blue-500 text-black' : 'bg-gray-200'} py-2 px-4 rounded-full mb-2`}
-                onClick={() => handleCategoryChange('kid')}
+                onClick={() => handleCategoryChange('kids')}
               >
                 Kids
               </button>
@@ -91,9 +89,15 @@ const Shop = ({ products, showFilters = true }) => {
                 <div className="p-4">
                   <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                   <p className="text-gray-600 mb-4">${product.price}</p>
-                  <a href="#!" className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 no-underline">
+                  <button
+                    onClick={() => {
+                      console.log(cart);;
+                      addToCart(product)
+                    }}
+                    className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 no-underline"
+                  >
                     Add to Cart
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}

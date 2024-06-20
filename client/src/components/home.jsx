@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Shop from './Shop';
+import Shop from './shop';
 import menImg from '../assets/men.png';
 import womenImg from '../assets/women.png';
 import kidImg from '../assets/youth.png';
@@ -24,7 +24,7 @@ const Home = ({ products }) => {
           {/* Men's Category */}
           <Link to="/shop/men" className="no-underline">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src={menImg} alt="Men's Fashion" className="w-full h-64 object-cover" style={{ height: '400px' }}/>
+              <img src={menImg} alt="Men's Fashion" className="w-full h-full object-cover"  />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">Men's Collection</h3>
                 <p className="text-gray-600 mb-4">Explore our latest men's fashion</p>
@@ -35,7 +35,7 @@ const Home = ({ products }) => {
           {/* Women's Category */}
           <Link to="/shop/women" className="no-underline">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src={womenImg} alt="Women's Fashion" className="w-full h-64 object-cover" style={{ height: '400px' }}/>
+              <img src={womenImg} alt="Women's Fashion" className="w-full h-full object-cover" />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">Women's Collection</h3>
                 <p className="text-gray-600 mb-4">Discover our stylish women's clothing</p>
@@ -46,7 +46,7 @@ const Home = ({ products }) => {
           {/* Kids' Category */}
           <Link to="/shop/kids" className="no-underline">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src={kidImg} alt="Kids' Fashion" className="w-full h-64 object-cover" style={{ height: '400px' }}/>
+              <img src={kidImg} alt="Kids' Fashion" className="w-full h-full object-cover" />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">Kids' Collection</h3>
                 <p className="text-gray-600 mb-4">Browse our adorable kids' outfits</p>
@@ -62,10 +62,10 @@ const Home = ({ products }) => {
         <Shop products={products.slice(0, 3)} showFilters={false} />
       </section>
 
-  
+
     </div>
-   
-   
+
+
   );
 };
 
