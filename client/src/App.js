@@ -4,7 +4,7 @@ import { useLocation, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 
 import Home from './components/home.jsx';
-import Shop from './components/shop.jsx';
+import Shop from './components/Shop.jsx';
 import About from './components/about.jsx';
 import Contact from './components/contact.jsx';
 import Login from './components/login.jsx';
@@ -56,7 +56,7 @@ const App = () => {
         <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route path='/dashboard' element={<Dashboard token={token} handleToken={handleToken} />} />
         <Route path='/register' element={<Register />} />
-        <Route path="/product/:id" element={<Product />} />
+        <Route path="/product/:id" element={<Product addToCart={addToCart}/>} />
         <Route path='/shop/men' element={<Men products={products} addToCart={addToCart} />} />
         <Route path='/shop/women' element={<Women products={products} addToCart={addToCart} />} />
         <Route path='/shop/kids' element={<Kids products={products} addToCart={addToCart} />} />

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-const Kids = ({ products }) => {
+const Kids = ({ products,addToCart }) => {
 
-  const kidsProducts = products.filter(product => product.category === 'kid');
+  const kidsProducts = products.filter(product => product.category === 'kids');
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -18,7 +18,11 @@ const Kids = ({ products }) => {
             <div className="p-4">
               <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
               <p className="text-gray-600 mb-4">${product.price}</p>
-              <a href="#!" className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">Add to Cart</a>
+              <a href="#!"
+                onClick={() => {
+                  addToCart(product)
+                }}
+              className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">Add to Cart</a>
             </div>
           </div>
         ))}
