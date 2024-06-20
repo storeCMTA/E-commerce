@@ -5,7 +5,7 @@ import menImg from '../assets/men.png';
 import womenImg from '../assets/women.png';
 import kidImg from '../assets/youth.png';
 
-const Home = ({ products }) => {
+const Home = ({ products,addToCart }) => {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
@@ -59,7 +59,7 @@ const Home = ({ products }) => {
       {/* Featured Products Section */}
       <section id="featured" className="container mx-auto px-4 py-16">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Our Best Sellers</h2>
-        <Shop products={products.slice(0, 3)} showFilters={false} />
+        <Shop products={products.slice(0, 3)} showFilters={false}  addToCart={addToCart}  />
       </section>
 
 

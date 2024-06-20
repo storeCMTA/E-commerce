@@ -49,7 +49,7 @@ const App = () => {
     <div>
       {location.pathname !== '/dashboard' && <Navbar handleToken={handleToken} token={token} cart={cart} />}
       <Routes>
-        <Route path="/" element={<Home products={products} />} />
+        <Route path="/" element={<Home products={products}  addToCart={addToCart} />} />
         <Route path="/shop" element={<Shop products={products} addToCart={addToCart} cart={cart} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
