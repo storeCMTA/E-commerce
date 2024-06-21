@@ -12,10 +12,10 @@ const Register = () => {
     axios
       .post("http://localhost:5500/register", { name, email, password })
       .then((res) => {
-       
+
         if (res.data.newuser[0]) {
           navigate("/login");
-        } 
+        }
       })
       .catch((err) => {
         setError("Email already used !!!");
@@ -24,18 +24,18 @@ const Register = () => {
 
   return (
     <div>
-      <div class="signinform">
-        <h1 class="fw-bold">Service Register</h1>
+      <div className="signinform">
+        <h1 className="fw-bold">Service Register</h1>
 
-        <div class="container">
-          <div class="w3l-form-info">
-            <div class="w3_info">
+        <div className="container">
+          <div className="w3l-form-info">
+            <div className="w3_info">
               <h2>Register</h2>
-              {error ?  <div className="alert alert-danger">{error}</div> : <p></p>}
+              {error ? <div className="alert alert-danger">{error}</div> : <p></p>}
               <div>
-                <div class="input-group">
+                <div className="input-group">
                   <span>
-                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <i className="fas fa-user" aria-hidden="true"></i>
                   </span>
                   <input
                     onChange={(e) => {
@@ -46,9 +46,9 @@ const Register = () => {
                     placeholder="name"
                   />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                   <span>
-                    <i class="fas fa-key" aria-hidden="true"></i>
+                    <i className="fas fa-key" aria-hidden="true"></i>
                   </span>
                   <input
                     value={email}
@@ -59,9 +59,9 @@ const Register = () => {
                     placeholder="email"
                   />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                   <span>
-                    <i class="fas fa-key" aria-hidden="true"></i>
+                    <i className="fas fa-key" aria-hidden="true"></i>
                   </span>
                   <input
                     value={password}
@@ -73,36 +73,36 @@ const Register = () => {
                   />
                 </div>
 
-                <button onClick={()=>{register()}} class="btn btn-primary btn-block">Register</button>
+                <button onClick={() => { register() }} className="btn btn-primary btn-block">Register</button>
               </div>
-              <p class="continue">
+              <p className="continue">
                 <span>or Register with</span>
               </p>
-              <div class="social-login">
+              <div className="social-login">
                 <a href="#facebook">
-                  <div class="facebook">
-                    <span class="fab fa-facebook-f" aria-hidden="true"></span>
+                  <div className="facebook">
+                    <span className="fab fa-facebook-f" aria-hidden="true"></span>
                   </div>
                 </a>
                 <a href="#twitter">
-                  <div class="twitter">
-                    <span class="fab fa-twitter" aria-hidden="true"></span>
+                  <div className="twitter">
+                    <span className="fab fa-twitter" aria-hidden="true"></span>
                   </div>
                 </a>
                 <a href="#google">
-                  <div class="google">
-                    <span class="fab fa-google" aria-hidden="true"></span>
+                  <div className="google">
+                    <span className="fab fa-google" aria-hidden="true"></span>
                   </div>
                 </a>
               </div>
-              <p class="account">
-                Already have an account <a href="#signup">Login</a>
+              <p className="account">
+                Already have an account <a href="/login">Login</a>
               </p>
             </div>
           </div>
         </div>
 
-        <div class="footer">
+        <div className="footer">
           <p> All Rights Reserved | Design by Achref</p>
         </div>
       </div>
