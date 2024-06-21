@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Shop from './shop';
+import Shop from './Shop.jsx';
 import menImg from '../assets/men.png';
 import womenImg from '../assets/women.png';
 import kidImg from '../assets/youth.png';
