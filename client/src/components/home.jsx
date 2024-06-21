@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Shop from './Shop.jsx';
 import menImg from '../assets/men.png';
 import womenImg from '../assets/women.png';
 import kidImg from '../assets/youth.png';
+import bgImg from '../assets/bg.jpg'
 
 const Home = ({ products,addToCart }) => {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
-      <section className="bg-cover bg-center h-screen" style={{ backgroundImage: "url('https://source.unsplash.com/random/1600x900?fashion')" }}>
+      <section className="bg-cover bg-center h-screen" style={{ backgroundImage: `url(${bgImg})` }}>
         <div className="bg-black bg-opacity-50 h-full flex flex-col justify-center items-center text-center text-white px-4">
           <h1 className="text-5xl md:text-7xl font-bold mb-4">New Collection</h1>
           <p className="text-xl md:text-2xl mb-8">Discover the latest trends in fashion</p>
@@ -59,7 +60,7 @@ const Home = ({ products,addToCart }) => {
       {/* Featured Products Section */}
       <section id="featured" className="container mx-auto px-4 py-16">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Our Best Sellers</h2>
-        <Shop products={products.slice(0, 3)} showFilters={false}  addToCart={addToCart}  />
+        <Shop  showFilters={false}  addToCart={addToCart}  />
       </section>
 
 
