@@ -96,7 +96,7 @@ const Register = () => {
                 </a>
               </div>
               <p className="account">
-                Already have an account <a href="#signup">Login</a>
+                Already have an account <a href="/login">Login</a>
               </p>
             </div>
           </div>

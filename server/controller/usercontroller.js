@@ -12,9 +12,9 @@ usermodel.registermodel(req.body.name,req.body.email,req.body.password).then((ne
 
 exports.logincontroller = (req,res)=>{
  usermodel.loginmodel(req.body.email,req.body.password).then((result)=>{
-    if (result.token){
+   /*  if (result.token){
      res.cookie('token',result.token)
-    }
+    } */
     res.json({status:"success !!" , token :result.token , role : result.user.role})
  }).catch((err)=>{
     res.json({status:"error", err:err.message}).status(400)
@@ -22,27 +22,55 @@ exports.logincontroller = (req,res)=>{
 }
 
 
-exports.logoutcontroller = (req,res)=>{
-   res.clearCookie('token')
-   res.json({status:"success !!" , message:"logged out successfully"})
-}
+// exports.logoutcontroller = (req,res)=>{
+//    res.clearCookie('token')
+//    res.json({status:"success !!" , message:"logged out successfully"})
+// }
 
 
 
 
 const privatekey = "this my secret key hahahahahahahahahahahaha";
 
-exports.verifytokenuser = async (req, res, next) => {
-   let token = req.cookies.token;
+exports.verifytokenadmin = async (req, res, next) => {
+   let token = req.headers?.authorization;
    if (!token) {
-     res.json({ msg: "access rejected !!!!!" });
+     return  res.json({ msg: "access rejected !!!!!" });
    }
    try {
      const verifytoken = jwt.verify(token, privatekey);
-     if (verifytoken) {
-       next();
+     if (verifytoken.role=="admin") {
+      return next();
+     }
+     else{
+      return  res.json({ msg: "access only for admin !!!!!" });
      }
    } catch (err) {
-     res.json({ msg: err });
+     return  res.json({ msg: err });
    }
  };
+
+
+
+ exports.verifytokenuser = async (req, res, next) => {
+  
+ 
+  try {
+    let token = await req.headers?.authorization;
+    if (!token) {
+      return  res.json({ msg: "access rejected !!!!!" });
+    }
+
+    const verifytoken = await jwt.verify(token, privatekey);
+    if (verifytoken) {
+     return next();
+    }
+    else{
+     return  res.json({ msg: "please login !!!!!" });
+    }
+  } catch (err) {
+    return  res.json({ msg: err });
+  }
+};
+
+

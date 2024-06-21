@@ -1,16 +1,16 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 
-const Navbar = ({ hundeltoken, token, cart }) => {
+
+const Navbar = ({ handleToken, token, cart }) => {
   const navigate = useNavigate();
 
   const logout = () => {
-    axios.get("http://localhost:5500/logout").then((res) => {
-      hundeltoken("");
-      navigate('/login');
-    });
-  };
+    localStorage.removeItem("token")
+    handleToken("")
+    navigate('/login')
+
+};
 
   return (
     <nav className="bg-white shadow">
@@ -32,7 +32,7 @@ const Navbar = ({ hundeltoken, token, cart }) => {
           {token ? (
             <button
               onClick={logout}
-              className="text-gray-600 hover:text-gray-900 no-underline"
+              className="text-gray-600 hover:text-gray-900 no-underline btn btn-danger"
             >
               Logout
             </button>
