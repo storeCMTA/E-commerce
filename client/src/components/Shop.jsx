@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link , useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-const Shop = ({ products, showFilters = true, addToCart, cart }) => {
+const Shop = ({ showFilters = true, addToCart, cart }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [data,setData] = useState([])
