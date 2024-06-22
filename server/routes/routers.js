@@ -8,6 +8,6 @@ router.get('/getALLProducts',usercontroller.verifytokenadmin, ProductsController
 router.get('/getProduct/:id', ProductsController.getProduct);
 router.patch('/updateProduct/:_id',ProductsController.updateProduct);
 router.delete('/deleteProduct/:_id',ProductsController.deleteProduct);
-router.get('/shop',usercontroller.verifytokenuser,ProductsController.getProducts)
+router.get('/shop',ProductsController.getProducts)
 
 module.exports = router; 

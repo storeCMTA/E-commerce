@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,useLocation} from 'react-router-dom'
 
 const Login = (props) => {
   const [email,setEmail] = useState("")
@@ -8,6 +8,16 @@ const Login = (props) => {
   const [error,setError] = useState('')
   axios.defaults.withCredentials = true
   const navigate = useNavigate()
+  const location = useLocation()
+
+  const message = location.state?.message;
+  useEffect(() => {
+    if (message) {
+      <div class="alert alert-danger" role="alert">
+     {message}
+    </div>
+    }
+  }, [message]);
 
   const login = ()=>{
     axios.post('http://localhost:5500/login',{email,password}).then((res)=>{
@@ -40,6 +50,28 @@ const Login = (props) => {
           <div className="w3l-form-info">
             <div className="w3_info">
               <h2>Login</h2>
+
+
+
+
+
+
+
+              {message && (
+        <div className="alert alert-warning alert-dismissible fade show" role="alert">
+          {message}
+          <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      )}
+
+
+
+
+
+
+
+
+
               {error ?  <div className="alert alert-danger">{error}</div> : null}
               <div >
                 <div className="input-group">
