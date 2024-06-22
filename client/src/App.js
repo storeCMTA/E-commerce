@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, Route, Routes } from 'react-router-dom';
+import { useLocation, Route, Routes,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Home from './components/home.jsx';
@@ -31,6 +31,8 @@ const App = () => {
       })
       .catch(error => console.error('Error fetching products:', error));
   }, []);
+  
+  const navigate = useNavigate()
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -44,15 +46,22 @@ const App = () => {
   };
 
   const addToCart = (product) => {
-    const existingProduct = cart.find(item => item._id === product._id);
-    if (existingProduct) {
-      increaseQuantity(product._id);
-    } else {
-      const updatedProduct = { ...product, quantity: 1 };
-      setCart((prevCart) => [...prevCart, updatedProduct]);
-      axios.patch(`http://localhost:5500/updateProduct/${product._id}`, { quantity: 1 })
-        .catch(error => console.error('Error updating product:', error));
+    if (token){
+      const existingProduct = cart.find(item => item._id === product._id);
+      if (existingProduct) {
+        increaseQuantity(product._id);
+      } else {
+        const updatedProduct = { ...product, quantity: 1 };
+        setCart((prevCart) => [...prevCart, updatedProduct]);
+        axios.patch(`http://localhost:5500/updateProduct/${product._id}`, { quantity: 1 })
+          .catch(error => console.error('Error updating product:', error));
+      }
     }
+    else{
+      navigate('/login', { state: { message: 'Please login !!' } });
+
+    }
+  
   };
 
   const increaseQuantity = (productId) => {
