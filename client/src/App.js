@@ -32,6 +32,11 @@ const App = () => {
       .catch(error => console.error('Error fetching products:', error));
   }, []);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) setToken(token);
+  }, []);
+
   const location = useLocation();
 
   const handleToken = (value) => {
