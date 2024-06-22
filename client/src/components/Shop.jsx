@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Link , useNavigate } from "react-router-dom";
-import axios from 'axios';
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
-const Shop = ({ showFilters = true, addToCart, cart }) => {
+const Shop = ({ products = [], showFilters = true, addToCart, cart }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const [data,setData] = useState([])
-  const navigate = useNavigate()
 
   const handleCategoryChange = (category) => {
     setSelectedCategory((prevCategory) => (prevCategory === category ? '' : category));
@@ -20,30 +17,8 @@ const Shop = ({ showFilters = true, addToCart, cart }) => {
     setSelectedCategory('');
     setSearchTerm('');
   };
-  
-   const hundeldata = async ()=>{
-    try {
-     const token = await localStorage.getItem("token")
-     if(!token){
-        navigate('/login')
-     }
-     else {
-      const response = await axios.get('http://localhost:5500/shop',{headers:{authorization:token}})
-      console.log(response.data)
-       setData(response.data)
-     }
-    
-    }catch(err){
-      console.log(err)
-    }
 
-   }
-
-  useEffect(()=>{
-   hundeldata()
-  },[])
-
-  const filteredProducts = data.filter((product) => {
+  const filteredProducts = products.filter((product) => {
     if (selectedCategory && product.category !== selectedCategory) {
       return false;
     }
@@ -115,10 +90,7 @@ const Shop = ({ showFilters = true, addToCart, cart }) => {
                   <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                   <p className="text-gray-600 mb-4">${product.price}</p>
                   <button
-                    onClick={() => {
-                      console.log(cart);;
-                      addToCart(product)
-                    }}
+                    onClick={() => addToCart(product)}
                     className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 no-underline"
                   >
                     Add to Cart
