@@ -24,15 +24,11 @@ const Shop = ({ products = [], showFilters = true, addToCart, cart }) => {
 
   const hundeldata = async ()=>{
     try {
-     const token = await localStorage.getItem("token")
-     if(!token){
-        navigate('/login')
-     }
-     else {
-      const response = await axios.get('http://localhost:5500/shop',{headers:{authorization:token}})
+    
+      const response = await axios.get('http://localhost:5500/shop')
       console.log(response.data)
        setData(response.data)
-     }
+     
     
     }catch(err){
       console.log(err)
