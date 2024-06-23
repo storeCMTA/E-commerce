@@ -19,7 +19,9 @@ const Dashboard = (props) => {
       navigate('/login')
   };
 
-
+const recl =()=>{
+  navigate('/reclamation')
+}
 
   useEffect(() => {
     fetchProducts();
@@ -48,6 +50,7 @@ const Dashboard = (props) => {
       <nav className="navbar navbar-expand-lg navbar-custom">
         <div className="container-fluid">
           <h3 className="navbar-brand" >Admin Dashboard</h3>
+          <button onClick={() => { recl() }} className="btn btn-outline-danger ms-auto" type="button" >Reclamations</button>
           <button onClick={() => { logout() }} className="btn btn-outline-danger ms-auto" type="button" >Logout</button>
           
         </div>

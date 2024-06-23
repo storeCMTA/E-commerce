@@ -7,6 +7,7 @@ const app = express();
 const db = require("./database/index.js");  // Import database connection
 const Router = require('./routes/routers.js')
 const userrouter = require('./routes/userroutes.js')
+const recRoutes =require('./routes/rec.js')
 
 const PORT = process.env.PORT || 5500;
 
@@ -26,6 +27,7 @@ db.on('error', (error) => {
 
 app.use('/',Router)
 app.use('/',userrouter)
+app.use('/',recRoutes)
 
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}!`);
