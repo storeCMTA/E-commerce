@@ -16,6 +16,7 @@ import Kids from './components/pages/kids.jsx';
 import Navbar from './components/navbar.jsx';
 import Footer from './components/footer.jsx';
 import Cart from './components/cart.jsx';
+import Reclamations from './components/reclamation.jsx';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -109,6 +110,7 @@ const App = () => {
           path="/cart"
           element={<Cart cart={cart} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} removeFromCart={removeFromCart} setCart={setCart} />}
         />
+        <Route path="/reclamation" element={<Reclamations/>}/>
       </Routes>
       <Footer />
     </div>
