@@ -15,7 +15,7 @@ const Navbar = ({ handleToken, token, cart }) => {
   return (
     <nav className="bg-white shadow">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-xl font-bold">ClothingShop</div>
+        <Link to="/#" className="text-black text-xl font-bold no-underline">ClothingShop</Link>
         <div className="hidden md:flex space-x-4">
           <Link to="/" className="text-gray-600 hover:text-gray-900 no-underline">Home</Link>
           <Link to="/shop" className="text-gray-600 hover:text-gray-900 no-underline">Shop</Link>
