@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const itemSchema = new mongoose.Schema({
   name : String,
   number:Number,
+  email: String,
   message:String
+
 },
 {
   timestamps: true,

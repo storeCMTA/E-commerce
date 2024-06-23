@@ -25,7 +25,10 @@ const getRecs = function (req, res) {
       {
         name: req.body.name,
         number: req.body.number,
+        email: req.body.email,
         message: req.body.message,
+        
+
       })
       .then((result) => {
         res.status(200).send(result);

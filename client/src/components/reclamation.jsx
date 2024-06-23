@@ -37,6 +37,7 @@ const Reclamations = () => {
           <tr>
             <th className="head">Name</th>
             <th className="head">Phone Number</th>
+            <th className="head">E-mail</th>
             <th className="head">Message</th>
             <th className="head">Actions</th>
           </tr>
@@ -46,6 +47,7 @@ const Reclamations = () => {
             <tr key={i}>
               <td>{rec.name}</td>
               <td>{rec.number}</td>
+              <td>{rec.email}</td>
               <td>{rec.message}</td>
               <td>
                 <input
