@@ -49,6 +49,7 @@ const Dashboard = (props) => {
         <div className="container-fluid">
           <h3 className="navbar-brand" >Admin Dashboard</h3>
           <button onClick={() => { logout() }} className="btn btn-outline-danger ms-auto" type="button" >Logout</button>
+          
         </div>
       </nav>
 
