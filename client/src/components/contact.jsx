@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const Contact = () => {
+  const [name,setName]=useState('')
+  const [number,setNumber]=useState(0)
+  const [email,setEmail]=useState('')
+  const [message,setMessage]=useState('')
+
+  const add=()=>{
+    axios.post("http://localhost:5500/addRec",{
+        name:name,
+        email:email,
+        number:number, 
+        message:message
+        }).then((result)=>console.log(result))
+       
+}
     return (
         <div  >
            <div className="contact3 py-5 contactmargin">
@@ -19,26 +34,30 @@ const Contact = () => {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="form-group mt-2">
-                    <input className="form-control" type="text" placeholder="name"/>
+                    <input className="form-control" type="text" placeholder="name"
+                     onChange={(e)=>setName(e.target.value)} required/>
                   </div>
                 </div>
                 <div className="col-lg-12">
                   <div className="form-group mt-2">
-                    <input className="form-control" type="email" placeholder="email address"/>
+                    <input className="form-control" type="email" placeholder="email address"
+                     onChange={(e)=>setEmail(e.target.value)} required/>
                   </div>
                 </div>
                 <div className="col-lg-12">
                   <div className="form-group mt-2">
-                    <input className="form-control" type="text" placeholder="phone"/>
+                    <input className="form-control" type="text" placeholder="phone"
+                     onChange={(e)=>setNumber(e.target.value)} required/>
                   </div>
                 </div>
                 <div className="col-lg-12">
                   <div className="form-group mt-2">
-                    <textarea className="form-control" rows="3" placeholder="message"></textarea>
+                    <textarea className="form-control" rows="3" placeholder="message"
+                     onChange={(e)=>setMessage(e.target.value)} required></textarea>
                   </div>
                 </div>
                 <div className="col-lg-12">
-                  <button type="submit" className="btn btn-primary mt-3 text-white border-0 px-3 py-2"><span> SUBMIT</span></button>
+                  <button type="submit" onClick={add} className="btn btn-primary mt-3 text-white border-0 px-3 py-2"><span> SUBMIT</span></button>
                 </div>
               </div>
             </form>
