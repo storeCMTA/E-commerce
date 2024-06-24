@@ -17,11 +17,26 @@ import Navbar from './components/navbar.jsx';
 import Footer from './components/footer.jsx';
 import Cart from './components/cart.jsx';
 import Reclamations from './components/reclamation.jsx';
+import Addproduct from './components/addproduct.jsx'
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [token, setToken] = useState('');
+  const [current,setCurrent] = useState([]) //1
+  const [newdata,setNewdata] = useState([])
+
+
+   const getdata = (data)=>{
+    setCurrent(data)
+   }
+
+   const getnewdata = (data)=>{
+    setNewdata(data)
+   }
+
+
+
 
   useEffect(() => {
     axios.get('http://localhost:5500/getProducts')
@@ -31,7 +46,8 @@ const App = () => {
         setCart(cartItems);
       })
       .catch(error => console.error('Error fetching products:', error));
-  }, []);
+  }, [])
+  ;
   
   const navigate = useNavigate()
 
@@ -40,11 +56,20 @@ const App = () => {
     if (token) setToken(token);
   }, []);
 
+
+
+
+
   const location = useLocation();
+
+
+
 
   const handleToken = (value) => {
     setToken(value);
   };
+
+
 
   const addToCart = (product) => {
     if (token){
@@ -65,6 +90,10 @@ const App = () => {
   
   };
 
+
+
+
+
   const increaseQuantity = (productId) => {
     const existingProduct = cart.find(item => item._id === productId);
     if (existingProduct) {
@@ -76,6 +105,10 @@ const App = () => {
         .catch(error => console.error('Error updating product:', error));
     }
   };
+
+
+
+
 
   const decreaseQuantity = (productId) => {
     const existingProduct = cart.find(item => item._id === productId);
@@ -91,6 +124,13 @@ const App = () => {
     }
   };
 
+
+
+
+
+
+
+
   const removeFromCart = (productId) => {
     axios.patch(`http://localhost:5500/updateProduct/${productId}`, { quantity: 0 })
       .then(() => {
@@ -100,28 +140,37 @@ const App = () => {
   };
 
 
+
+
+
+
+
+
   return (
     <div>
-      {location.pathname !== '/dashboard' && <Navbar handleToken={handleToken} token={token} cart={cart} />}
+      {location.pathname !== '/dashboard' && location.pathname !== '/addproduct' && <Navbar handleToken={handleToken} token={token} cart={cart} />}
       <Routes>
         <Route path="/" element={<Home products={products} addToCart={addToCart} />} />
         <Route path="/shop" element={<Shop products={products} addToCart={addToCart} cart={cart} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />
-        <Route path="/dashboard" element={<Dashboard token={token} handleToken={handleToken} />} />
+        <Route path="/dashboard" element={<Dashboard  getdata={getdata} token={token} newdata={newdata} handleToken={handleToken} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/shop/men" element={<Men products={products} addToCart={addToCart} />} />
         <Route path="/shop/women" element={<Women products={products} addToCart={addToCart} />} />
         <Route path="/shop/kids" element={<Kids products={products} addToCart={addToCart} />} />
+        <Route/>
         <Route
           path="/cart"
           element={<Cart cart={cart} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} removeFromCart={removeFromCart} setCart={setCart} />}
         />
         <Route path="/reclamation" element={<Reclamations/>}/>
+        <Route path='/addproduct' getnewdata={getnewdata}  products={products} element ={<Addproduct/>}/>
       </Routes>
-      <Footer />
+      {location.pathname !=="/addproduct" &&   <Footer />}
+    
     </div>
   );
 };
