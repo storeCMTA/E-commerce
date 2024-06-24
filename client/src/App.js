@@ -23,7 +23,7 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [token, setToken] = useState('');
-  const [current,setCurrent] = useState([]) //1
+  const [current,setCurrent] = useState([]) 
   const [newdata,setNewdata] = useState([])
 
 
@@ -148,7 +148,7 @@ const App = () => {
 
   return (
     <div>
-      {location.pathname !== '/dashboard' && location.pathname !== '/addproduct' && <Navbar handleToken={handleToken} token={token} cart={cart} />}
+      {location.pathname !== '/dashboard' && location.pathname !== '/addproduct' && location.pathname!== '/reclamation' && <Navbar handleToken={handleToken} token={token} cart={cart} />}
       <Routes>
         <Route path="/" element={<Home products={products} addToCart={addToCart} />} />
         <Route path="/shop" element={<Shop products={products} addToCart={addToCart} cart={cart} />} />
