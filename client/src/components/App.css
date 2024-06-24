@@ -12,3 +12,12 @@
     color: #f8f9fa; /* Couleur au survol */
   }
   
+
+  .margin {
+    margin-bottom: 500px;
+  }
+
+.border{
+  border: solid;
+  border-radius: 5px;
+}

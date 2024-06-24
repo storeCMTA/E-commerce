@@ -6,7 +6,7 @@ const Login = (props) => {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [error,setError] = useState('')
-  axios.defaults.withCredentials = true
+  // axios.defaults.withCredentials = true
   const navigate = useNavigate()
   const location = useLocation()
 
